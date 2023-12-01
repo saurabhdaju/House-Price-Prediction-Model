@@ -52,25 +52,28 @@ def derivate(x, y, m, c):
     
 
 
-# In[9]:
+# In[6]:
 
 
 def minJ(m, c, alpha, x, y, n):
     dev1, dev2 = derivate(x, y, m, c)
     
-    while(dev1 != 0 and dev2 != 0):
+    iterations = 100
+    
+    while(iterations >= 0):
         temp1 = m - (alpha * dev1) / n
         temp2 = c - (alpha * dev2) / n
         
         m, c = temp1, temp2
         dev1, dev2 = derivate(x, y, m, c)
+        
+        iterations -= 1
     
     return m, c
         
 
 
-# In[10]:
-
+# In[7]:
 
 
 print("INPUT DATA")
@@ -80,7 +83,7 @@ for i in range(n):
     print(f"{house_area[i]}        {house_price[i]}")
 
 
-# In[11]:
+# In[8]:
 
 
 # considering initial values of 'm' and 'c'
@@ -91,7 +94,7 @@ c = 0.4
 print(f"Assumed values\n m = {m}\n c = {c}")
 
 
-# In[12]:
+# In[9]:
 
 
 # calling the function to compute correct values of 'm' and 'c'
@@ -101,9 +104,8 @@ print(f"Correct values\n m = {m}\n c = {c}")
 
 
 # ## Therefore our model is ready to use
-# ### price = 0.4262944 * area + 0.2112459
 
-# In[9]:
+# In[10]:
 
 
 area = float(input("Enter the house area "))
@@ -113,7 +115,6 @@ print('The expected price should be %.4f Crores' %price)
 
 
 # In[ ]:
-
 
 
 
